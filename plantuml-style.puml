@@ -1,0 +1,10 @@
+skinparam rectangle {
+  roundCorner 25
+  backgroundColor #F0FDF8
+  FontSize 20
+ }
+
+skinparam note{
+  backgroundColor #F0FDF8
+  FontSize 14
+}
