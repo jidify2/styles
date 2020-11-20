@@ -1,10 +1,37 @@
-skinparam rectangle {
-  roundCorner 25
-  backgroundColor #F0FDF8
-  FontSize 20
- }
+' skinparam wrapWidth 2000
+hide stereotype
 
-skinparam note{
-  backgroundColor #F0FDF8
-  FontSize 14
+!definelong HStyle(stereo, rc, c_bg, c_bd)
+skinparam rectangle<<stereo>> {
+  roundCorner rc
+  backgroundColor c_bg
+  borderColor c_bd
 }
+!enddefinelong
+
+!definelong H(alias, label, f_size, stereo)
+rectangle "<size:f_size>label</size>" <<stereo>> as alias
+!enddefinelong
+
+!definelong Hd(alias, label, f_size, description, stereo, noteStyle)
+rectangle "<size:f_size>label</size>" <<stereo>> as alias {
+  rectangle "description" <<noteStyle>>
+} 
+!enddefinelong 
+
+
+HStyle(H1note, 5, #FFE8B5, #FFE8B5)
+HStyle(H2note, 5, #FFE8B5, #FFE8B5)
+HStyle(H3note, 5, #B5FFD0, #B5FFD0)
+
+HStyle(H1, 50, #ivory, #555)
+!define H1(alias, label) H(alias, label, 30, H1)
+!define H1d(alias, label, desc) Hd(alias, label, 30, desc, H1, H1note)
+
+HStyle(H2, 50, #ivory, #555)
+!define H2(alias, label) H(alias, label, 25, H2)
+!define H2d(alias, label, desc) Hd(alias, label, 25, desc, H2, H2note)
+
+HStyle(H3, 10, #lightGreen, #555)
+!define H3(alias, label) H(alias, label, 15, H3)
+!define H3d(alias, label, desc) Hd(alias, label, 15, desc, H3, H3note)
